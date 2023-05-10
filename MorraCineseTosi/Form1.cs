@@ -11,6 +11,8 @@ namespace MorraCineseTosi
         }
 
         private Statistics Stats { get; set; } = new Statistics();
+        private Choice player1Choice;
+        private Choice player2Choice;
 
         private void CartaBtn_Click(object sender, EventArgs e)
         {
@@ -36,11 +38,22 @@ namespace MorraCineseTosi
 
             if (btn != null)
             {
-                PlayerChoicePic.Image = btn.Image;
+                Turn turn = Stats.Turn;
+                Stats.NextTurn();
+                if (turn == Turn.Player1)
+                {
+                    PlayerChoicePic.Image = btn.Image;
+                    player1Choice = playerChoice;
+                } else
+                {
+                    player2Choice = playerChoice;
+                    CpuChoicePic.Image = btn.Image;
+                }
 
-                Random rand = new Random();
+                #region CPU
+                //Random rand = new Random();
 
-                Choice cpuChoice = new Choice();
+                //Choice cpuChoice = new Choice();
 
                 //switch(rand.Next(0,3))
                 //{
@@ -55,32 +68,33 @@ namespace MorraCineseTosi
                 //        break;
                 //}
 
-                cpuChoice = (Choice)rand.Next(0, 3);
+                //cpuChoice = (Choice)rand.Next(0, 3);
 
-                switch (cpuChoice)
-                {
-                    case Choice.Rock:
-                        CpuChoicePic.Image = Resources.Sasso;
-                        break;
-                    case Choice.Paper:
-                        CpuChoicePic.Image = Resources.Carta;
-                        break;
-                    case Choice.Scissors:
-                        CpuChoicePic.Image = Resources.Forbice;
-                        break;
-                }
+                //switch (cpuChoice)
+                //{
+                //    case Choice.Rock:
+                //        CpuChoicePic.Image = Resources.Sasso;
+                //        break;
+                //    case Choice.Paper:
+                //        CpuChoicePic.Image = Resources.Carta;
+                //        break;
+                //    case Choice.Scissors:
+                //        CpuChoicePic.Image = Resources.Forbice;
+                //        break;
+                //}
+                #endregion
 
                 VersusPic.Visible = true;
 
-                if (playerChoice == cpuChoice)
+                if (player1Choice == player2Choice)
                 {
                     ResultLbl.Text = "PAREGGIO";
                     Stats.Draws++;
 
                 }
-                else if (playerChoice == Choice.Rock && cpuChoice == Choice.Scissors
-                    || playerChoice == Choice.Paper && cpuChoice == Choice.Rock
-                    || playerChoice == Choice.Scissors && cpuChoice == Choice.Paper)
+                else if (player1Choice == Choice.Rock && player2Choice == Choice.Scissors
+                    || player1Choice == Choice.Paper && player2Choice == Choice.Rock
+                    || player1Choice == Choice.Scissors && player2Choice == Choice.Paper)
                 {
                     ResultLbl.Text = "Giocatore vince!";
                     Stats.PlayerWins++;
@@ -90,6 +104,11 @@ namespace MorraCineseTosi
                     ResultLbl.Text = "CPU vince!";
                     Stats.CpuWins++;
                 }
+
+                //string testo = $"Il totale delle vittorie del giocatore è: {Stats.PlayerWins}";
+                playerWinsLbl.Text = $"{Stats.PlayerWins}";
+                cpuWinsLbl.Text = $"{Stats.CpuWins}";
+                drawsLbl.Text = Stats.Draws.ToString();
             }
         }
 
@@ -99,5 +118,7 @@ namespace MorraCineseTosi
             Paper,
             Scissors
         }
+
+        
     }
 }
