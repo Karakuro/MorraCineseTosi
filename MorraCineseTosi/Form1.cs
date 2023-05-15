@@ -49,13 +49,31 @@ namespace MorraCineseTosi
                 Stats.NextTurn();
                 if (turn == Turn.Player1)
                 {
-                    PlayerChoicePic.Image = btn.Image;
+                    if (!PlayerChoicePic.Visible)
+                        PlayerChoicePic.Visible = true;
+
+                    PlayerChoicePic.Image = Resources.Scelta;
+                    CpuChoicePic.Image = Resources.Scelta;
                     player1Choice = playerChoice;
                 }
                 else
                 {
                     player2Choice = playerChoice;
                     CpuChoicePic.Image = btn.Image;
+
+                    switch (player1Choice)
+                    {
+                        case Choice.Rock:
+                            PlayerChoicePic.Image = Resources.Sasso;
+                            break;
+                        case Choice.Paper:
+                            PlayerChoicePic.Image = Resources.Carta;
+                            break;
+                        case Choice.Scissors:
+                            PlayerChoicePic.Image = Resources.Forbice;
+                            break;
+                    }
+
                     #region CPU
                     //Random rand = new Random();
 
