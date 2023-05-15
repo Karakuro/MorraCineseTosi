@@ -36,13 +36,14 @@
             CpuChoicePic = new PictureBox();
             VersusPic = new PictureBox();
             groupBox1 = new GroupBox();
-            groupBox2 = new GroupBox();
-            playerWinsLbl = new Label();
-            cpuWinsLbl = new Label();
-            drawsLbl = new Label();
-            label1 = new Label();
-            label2 = new Label();
             label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            drawsLbl = new Label();
+            cpuWinsLbl = new Label();
+            playerWinsLbl = new Label();
+            groupBox2 = new GroupBox();
+            StateLbl = new Label();
             ((System.ComponentModel.ISupportInitialize)PlayerChoicePic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)CpuChoicePic).BeginInit();
             ((System.ComponentModel.ISupportInitialize)VersusPic).BeginInit();
@@ -53,7 +54,7 @@
             // 
             CartaBtn.AutoSize = true;
             CartaBtn.Image = Properties.Resources.Carta;
-            CartaBtn.Location = new Point(12, 83);
+            CartaBtn.Location = new Point(12, 22);
             CartaBtn.Name = "CartaBtn";
             CartaBtn.Size = new Size(171, 171);
             CartaBtn.TabIndex = 0;
@@ -64,7 +65,7 @@
             // 
             ForbiciBtn.AutoSize = true;
             ForbiciBtn.Image = Properties.Resources.Forbice;
-            ForbiciBtn.Location = new Point(189, 83);
+            ForbiciBtn.Location = new Point(189, 22);
             ForbiciBtn.Name = "ForbiciBtn";
             ForbiciBtn.Size = new Size(171, 171);
             ForbiciBtn.TabIndex = 1;
@@ -75,7 +76,7 @@
             // 
             SassoBtn.AutoSize = true;
             SassoBtn.Image = Properties.Resources.Sasso;
-            SassoBtn.Location = new Point(366, 84);
+            SassoBtn.Location = new Point(366, 23);
             SassoBtn.Name = "SassoBtn";
             SassoBtn.Size = new Size(171, 170);
             SassoBtn.TabIndex = 2;
@@ -85,25 +86,27 @@
             // ResultLbl
             // 
             ResultLbl.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
-            ResultLbl.Location = new Point(12, 257);
+            ResultLbl.Location = new Point(12, 591);
             ResultLbl.Name = "ResultLbl";
-            ResultLbl.Size = new Size(525, 218);
+            ResultLbl.Size = new Size(525, 109);
             ResultLbl.TabIndex = 3;
-            ResultLbl.Text = "Scegli la mossa";
+            ResultLbl.Text = "Il vincitore è...";
             ResultLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // PlayerChoicePic
             // 
-            PlayerChoicePic.Location = new Point(12, 478);
+            PlayerChoicePic.Image = Properties.Resources.Scelta;
+            PlayerChoicePic.Location = new Point(12, 417);
             PlayerChoicePic.Name = "PlayerChoicePic";
             PlayerChoicePic.Size = new Size(171, 171);
             PlayerChoicePic.SizeMode = PictureBoxSizeMode.Zoom;
             PlayerChoicePic.TabIndex = 4;
             PlayerChoicePic.TabStop = false;
+            PlayerChoicePic.Visible = false;
             // 
             // CpuChoicePic
             // 
-            CpuChoicePic.Location = new Point(366, 478);
+            CpuChoicePic.Location = new Point(366, 417);
             CpuChoicePic.Name = "CpuChoicePic";
             CpuChoicePic.Size = new Size(171, 171);
             CpuChoicePic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -113,7 +116,7 @@
             // VersusPic
             // 
             VersusPic.Image = Properties.Resources.vs;
-            VersusPic.Location = new Point(189, 478);
+            VersusPic.Location = new Point(189, 417);
             VersusPic.Name = "VersusPic";
             VersusPic.Size = new Size(171, 171);
             VersusPic.SizeMode = PictureBoxSizeMode.Zoom;
@@ -137,34 +140,35 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Risultati";
             // 
-            // groupBox2
+            // label3
             // 
-            groupBox2.Location = new Point(358, 164);
-            groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(8, 8);
-            groupBox2.TabIndex = 0;
-            groupBox2.TabStop = false;
-            groupBox2.Text = "groupBox2";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(6, 362);
+            label3.Name = "label3";
+            label3.Size = new Size(183, 62);
+            label3.TabIndex = 6;
+            label3.Text = "Pareggi";
             // 
-            // playerWinsLbl
+            // label2
             // 
-            playerWinsLbl.AutoSize = true;
-            playerWinsLbl.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            playerWinsLbl.Location = new Point(573, 129);
-            playerWinsLbl.Name = "playerWinsLbl";
-            playerWinsLbl.Size = new Size(52, 62);
-            playerWinsLbl.TabIndex = 1;
-            playerWinsLbl.Text = "0";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(6, 245);
+            label2.Name = "label2";
+            label2.Size = new Size(432, 62);
+            label2.TabIndex = 5;
+            label2.Text = "Vittorie Giocatore 2";
             // 
-            // cpuWinsLbl
+            // label1
             // 
-            cpuWinsLbl.AutoSize = true;
-            cpuWinsLbl.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            cpuWinsLbl.Location = new Point(573, 245);
-            cpuWinsLbl.Name = "cpuWinsLbl";
-            cpuWinsLbl.Size = new Size(52, 62);
-            cpuWinsLbl.TabIndex = 2;
-            cpuWinsLbl.Text = "0";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(6, 129);
+            label1.Name = "label1";
+            label1.Size = new Size(432, 62);
+            label1.TabIndex = 4;
+            label1.Text = "Vittorie Giocatore 1";
             // 
             // drawsLbl
             // 
@@ -176,41 +180,51 @@
             drawsLbl.TabIndex = 3;
             drawsLbl.Text = "0";
             // 
-            // label1
+            // cpuWinsLbl
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(6, 129);
-            label1.Name = "label1";
-            label1.Size = new Size(394, 62);
-            label1.TabIndex = 4;
-            label1.Text = "Vittorie Giocatore";
+            cpuWinsLbl.AutoSize = true;
+            cpuWinsLbl.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            cpuWinsLbl.Location = new Point(573, 245);
+            cpuWinsLbl.Name = "cpuWinsLbl";
+            cpuWinsLbl.Size = new Size(52, 62);
+            cpuWinsLbl.TabIndex = 2;
+            cpuWinsLbl.Text = "0";
             // 
-            // label2
+            // playerWinsLbl
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(6, 245);
-            label2.Name = "label2";
-            label2.Size = new Size(279, 62);
-            label2.TabIndex = 5;
-            label2.Text = "Vittorie CPU";
+            playerWinsLbl.AutoSize = true;
+            playerWinsLbl.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
+            playerWinsLbl.Location = new Point(573, 129);
+            playerWinsLbl.Name = "playerWinsLbl";
+            playerWinsLbl.Size = new Size(52, 62);
+            playerWinsLbl.TabIndex = 1;
+            playerWinsLbl.Text = "0";
             // 
-            // label3
+            // groupBox2
             // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 28.2F, FontStyle.Regular, GraphicsUnit.Point);
-            label3.Location = new Point(6, 362);
-            label3.Name = "label3";
-            label3.Size = new Size(183, 62);
-            label3.TabIndex = 6;
-            label3.Text = "Pareggi";
+            groupBox2.Location = new Point(358, 164);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(8, 8);
+            groupBox2.TabIndex = 0;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "groupBox2";
+            // 
+            // StateLbl
+            // 
+            StateLbl.Font = new Font("Segoe UI", 16.2F, FontStyle.Regular, GraphicsUnit.Point);
+            StateLbl.Location = new Point(12, 196);
+            StateLbl.Name = "StateLbl";
+            StateLbl.Size = new Size(525, 218);
+            StateLbl.TabIndex = 8;
+            StateLbl.Text = "Scegli la mossa";
+            StateLbl.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1231, 712);
+            Controls.Add(StateLbl);
             Controls.Add(groupBox1);
             Controls.Add(VersusPic);
             Controls.Add(CpuChoicePic);
@@ -247,5 +261,6 @@
         private Label cpuWinsLbl;
         private Label playerWinsLbl;
         private GroupBox groupBox2;
+        private Label StateLbl;
     }
 }

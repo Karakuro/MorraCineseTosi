@@ -8,8 +8,8 @@ namespace MorraCineseTosi
 {
     internal class Statistics
     {
-        public int PlayerWins { get; set; } = 0;
-        public int CpuWins { get; set; } = 0;
+        public int Player1Wins { get; set; } = 0;
+        public int Player2Wins { get; set; } = 0;
         public int Draws { get; set; } = 0;
         public Turn Turn { get; set; } = Turn.Player1;
 
@@ -25,7 +25,7 @@ namespace MorraCineseTosi
     }
     internal enum Turn
     {
-        Player1,
+        Player1 = 1,
         Player2
     }
 }
